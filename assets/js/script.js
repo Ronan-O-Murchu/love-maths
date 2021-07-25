@@ -37,14 +37,20 @@ function runGame (gameType) {
 
 function checkAnswer() {
 
+/** This code calculates the values fo the user input and reponds with an alert
+ * to delcare if they got it right or wrong.
+ * */
+
     let userAnswer = parseInt(document.getElementById("answer-box").value);
     let calculatedAnswer = calculateCorrectAnswer();
     let isCorrect = userAnswer === calculatedAnswer[0];
 
     if (isCorrect) {
         alert("Hey! You got it right! :D");
+        incrementScore();
     } else {
         alert(`Awwww.... you answered ${userAnswer}. The correct answer was ${calculatedAnswer[0]}!`);
+    	incrementWrongAnswer();
     }
 
     runGame(calculatedAnswer[1]);
@@ -72,9 +78,18 @@ function calculateCorrectAnswer () {
 
 function incrementScore () {
 
+/** This code will retrieve the value from the DOM and increase it by 1
+ * */
+
+	let oldScore = parseInt(document.getElementById("score").innerText);
+	document.getElementById("score").innerText = ++oldScore;
+
 }
 
 function incrementWrongAnswer () {
+
+	let oldScore = parseInt(document.getElementById("incorrect").innerText);
+	document.getElementById("incorrect").innerText = ++oldScore;
 
 }
 
