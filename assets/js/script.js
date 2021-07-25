@@ -14,12 +14,23 @@ document.addEventListener("DOMContentLoaded", function() {
 			}
         });
     }
+
+    document.getElementById("answer-box").addEventListener("keydown", function(event) {
+    	if (event.key === "Enter") {
+    		checkAnswer();
+    	}
+    })
+
     runGame("addition");
 });
 
 /** This is the first loop to run when the webpage is loaded */
 
 function runGame (gameType) {
+
+	document.getElementById("answer-box").value = "";
+	document.getElementById("answer-box").focus();
+
 	/** This code creates 2 random numbers between 1 and 24 */
 	let num1 = Math.floor(Math.random() * 25) + 1;
 	let num2 = Math.floor(Math.random() * 25) + 1;
